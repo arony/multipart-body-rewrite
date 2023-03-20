@@ -1,0 +1,21 @@
+server:
+  port: 8000
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: legacy
+          uri: http://localhost:8002
+          predicates:
+            - Path=/legacy/**
+          filters:
+            - StripPrefix=1
+            - Modify
+        - id: document
+          uri: http://localhost:8001
+          predicates:
+            - Path=/document/**
+logging:
+  level:
+    root: debug
