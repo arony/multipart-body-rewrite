@@ -102,14 +102,3 @@ class ModifyGatewayFilterFactory(
         }
     }
 }
-
-class ModifyRewriteFunction : RewriteFunction<MultiValueMap<String, Part>, MultiValueMap<String, Part>> {
-    override fun apply(exchange: ServerWebExchange, value: MultiValueMap<String, Part>): Publisher<MultiValueMap<String, Part>> {
-        return value.toMono()
-    }
-
-}
-
-data class UploadRequest(
-        val file: FilePart
-)
